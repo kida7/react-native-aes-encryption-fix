@@ -8,7 +8,9 @@ import java.security.NoSuchAlgorithmException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.Mac;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
@@ -266,6 +268,16 @@ public class CryptLib {
         {
             return result.toString().substring(0, length);
         }
+    }
+
+    public static byte[] createMac(byte[] bData, byte[] keybyte) throws NoSuchAlgorithmException, InvalidKeyException {
+        String ALGORITHM = "HmacSHA256";
+
+        Mac mac = Mac.getInstance(ALGORITHM);
+        SecretKey key = new SecretKeySpec(keybyte, ALGORITHM);
+        mac.init(key);
+        mac.update(bData);
+        return mac.doFinal();
     }
 }
 
