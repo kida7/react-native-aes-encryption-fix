@@ -1,0 +1,24 @@
+{
+  "name": "react-native-aes-encryption-fix",
+  "version": "0.1.3",
+  "description": "cross platform AES encryption lib for React Native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kida7/react-native-aes-encryption-fix.git"
+  },
+  "keywords": [
+    "AES",
+    "React",
+    "Native"
+  ],
+  "author": "fandaydai, kida7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kida7/react-native-aes-encryption-fix/issues"
+  },
+  "homepage": "https://github.com/kida7/react-native-aes-encryption-fix"
+}
