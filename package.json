@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/kida7/react-native-aes-encryption-fix/issues"
   },
-  "homepage": "https://github.com/kida7/react-native-aes-encryption-fix"
+  "homepage": "https://github.com/kida7/react-native-aes-encryption-fix",
+  "dependencies": {
+    "base-64": "^0.1.0"
+  }
 }
