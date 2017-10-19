@@ -256,23 +256,11 @@ public class CryptLib {
         SecureRandom ranGen = new SecureRandom();
         byte[] aesKey = new byte[16];
         ranGen.nextBytes(aesKey);
-        StringBuffer result = new StringBuffer();
-        for (byte b : aesKey) {
-            result.append(String.format("%02x", b)); //convert to hex
-        }
-        if(length> result.toString().length())
-        {
-            return result.toString();
-        }
-        else
-        {
-            return result.toString().substring(0, length);
-        }
+        return Base64.encodeToString(aesKey, Base64.DEFAULT);
     }
 
     public static byte[] createMac(byte[] bData, byte[] keybyte) throws NoSuchAlgorithmException, InvalidKeyException {
         String ALGORITHM = "HmacSHA256";
-
         Mac mac = Mac.getInstance(ALGORITHM);
         SecretKey key = new SecretKeySpec(keybyte, ALGORITHM);
         mac.init(key);
