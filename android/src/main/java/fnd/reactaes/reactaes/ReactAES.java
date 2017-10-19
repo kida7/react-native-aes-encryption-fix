@@ -28,7 +28,7 @@ public class ReactAES  extends ReactContextBaseJavaModule{
             String md5Text = CryptLib.md5(inputString);
             promise.resolve(md5Text);
         } catch (Exception e) {
-            promise.reject("-1","md5 failed");
+            promise.reject("-1","md5 failed: "+e.getMessage());
         }
     }
 
@@ -39,7 +39,7 @@ public class ReactAES  extends ReactContextBaseJavaModule{
             String encrytedText = _crypt.encrypt(plainText, key, iv); //encrypt
             promise.resolve(encrytedText);
         } catch (Exception e) {
-            promise.reject("-1","encrypt failed");
+            promise.reject("-1","encrypt failed: "+e.getMessage());
         }
     }
 
@@ -50,7 +50,7 @@ public class ReactAES  extends ReactContextBaseJavaModule{
             String plainText = _crypt.decrypt(encryptedText, key,iv); //decrypt
             promise.resolve(plainText);
         } catch (Exception e) {
-            promise.reject("-1",e.getMessage());
+            promise.reject("-1","decrypt failed: "+e.getMessage());
         }
 
     }
@@ -61,7 +61,7 @@ public class ReactAES  extends ReactContextBaseJavaModule{
             String iv = CryptLib.generateRandomIV(length);
             promise.resolve(iv);
         } catch (Exception e) {
-            promise.reject("-1","gen iv failed");
+            promise.reject("-1","generateRandomIV failed: "+e.getMessage());
         }
 
     }
@@ -73,7 +73,7 @@ public class ReactAES  extends ReactContextBaseJavaModule{
             promise.resolve(returnKey);
 
         } catch (Exception e) {
-            promise.reject("-1","sha256 failed");
+            promise.reject("-1","sha256 failed: "+e.getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ public class ReactAES  extends ReactContextBaseJavaModule{
             byte[] result = CryptLib.createMac(data.getBytes(),key.getBytes());
             promise.resolve(Base64.encode(result,Base64.DEFAULT));
         }catch (Exception e){
-            promise.reject("-1",e.getMessage());
+            promise.reject("-1","createMac failed: "+e.getMessage());
         }
     }
 }
