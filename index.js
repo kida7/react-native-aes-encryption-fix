@@ -15,10 +15,13 @@ reactAES.decrypt = async function (data, key, iv) {
 }
 
 reactAES.generateRandomIV = async function (length) {
-    return await aes.base64.decode(aes.generateRandomIV(length));
+    return base64.decode(await aes.generateRandomIV(length));
 }
 reactAES.createMac = async function (data, key) {
-    return await aes.createMac(base64.encode(data), key);
+    return await aes.createMac(data, key);
+}
+reactAES.encryptBase64= async function (data, key, iv) {
+    return await aes.encrypt(data, key, base64.encode(iv));
 }
 
 

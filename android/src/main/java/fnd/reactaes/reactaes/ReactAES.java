@@ -1,5 +1,6 @@
 package fnd.reactaes.reactaes;
 import android.util.Base64;
+import android.util.Log;
 
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.Promise;
@@ -80,8 +81,10 @@ public class ReactAES  extends ReactContextBaseJavaModule{
     @ReactMethod
     public void createMac(final String data,final String key, Promise promise){
         try{
-            byte[] result = CryptLib.createMac(data.getBytes(),key.getBytes());
-            promise.resolve(Base64.encode(result,Base64.DEFAULT));
+            //Log.e("vinhlv","createMac="+data);
+            byte[] result = CryptLib.createMac(data.getBytes("UTF-8"),key.getBytes());
+            Log.e("vinhlv","result="+Base64.encodeToString(result,Base64.DEFAULT));
+            promise.resolve(Base64.encodeToString(result,Base64.DEFAULT));
         }catch (Exception e){
             promise.reject("-1","createMac failed: "+e.getMessage());
         }
