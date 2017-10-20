@@ -83,8 +83,8 @@ public class ReactAES  extends ReactContextBaseJavaModule{
         try{
             //Log.e("vinhlv","createMac="+data);
             byte[] result = CryptLib.createMac(data.getBytes("UTF-8"),key.getBytes());
-            Log.e("vinhlv","result="+Base64.encodeToString(result,Base64.DEFAULT));
-            promise.resolve(Base64.encodeToString(result,Base64.DEFAULT));
+//            Log.e("vinhlv","result="+Base64.encodeToString(result,Base64.DEFAULT));
+            promise.resolve(Base64.encodeToString(result,Base64.NO_WRAP));
         }catch (Exception e){
             promise.reject("-1","createMac failed: "+e.getMessage());
         }
